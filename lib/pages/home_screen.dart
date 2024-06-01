@@ -1,34 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class SignUp extends StatelessWidget {
-  const SignUp({super.key});
+class Homescreen extends StatelessWidget {
+  const Homescreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Sign Up'),
+        title: const Text('Home Screen'),
         backgroundColor: Colors.blue,
         elevation: 1,
         automaticallyImplyLeading: false,
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            const Text('Sign Up'),
+            const Text('Home Screen'),
             ElevatedButton(
               onPressed: () {
-                Get.back();
+                Get.toNamed('/signUp');
               },
               child: const Text('Sign Up'),
             ),
             ElevatedButton(
               onPressed: () {
-                Get.toNamed('/homescreen');
+                Get.back();
               },
-              child: const Text('Home Screen'),
+              child: const Text('Sign In'),
             ),
           ],
         ),
