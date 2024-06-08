@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:login_signup_state_management/controller/login_controller/login_controller.dart';
 import 'package:login_signup_state_management/widgets/button.dart';
 import 'package:login_signup_state_management/widgets/text_heading.dart';
 import 'package:login_signup_state_management/widgets/text_email_field.dart';
@@ -15,8 +16,10 @@ class SignIn extends StatefulWidget {
 class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
-    TextEditingController emailLoginController = TextEditingController();
-    TextEditingController passwordLoginController = TextEditingController();
+    LoginController controller = Get.put(LoginController());
+
+    // TextEditingController emailLoginController = TextEditingController();
+    // TextEditingController passwordLoginController = TextEditingController();
     return Scaffold(
       appBar: AppBar(
         title: const Text('Sign In'),
@@ -34,12 +37,17 @@ class _SignInState extends State<SignIn> {
               CustomTextEmailField(
                 label: 'Email',
                 hint: 'Enter your email',
-                controller: emailLoginController,
+                controller: controller.emailLoginController.value,
               ),
               CustomTextPasswordField(
-                controller: passwordLoginController,
+                controller: controller.passwordLoginController.value,
               ),
-              CustomElevatedButton(label: 'Login', onPressed: () {}),
+              CustomElevatedButton(
+                  label: 'Login',
+                  onPressed: () {
+                    controller.loginApi();
+                    debugPrint(controller.toString());
+                  }),
               CustomElevatedButton(
                   label: 'Sign Up',
                   onPressed: () {
